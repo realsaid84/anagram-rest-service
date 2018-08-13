@@ -14,9 +14,12 @@ import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Service;
 
 /**
- * A service to lazy load Word Dictionary at Application startup. <br>
- * It also provides mechanisms for basic CRD operations of the Dictionary.
- * 
+ * A Dictionary Service to lazy load Words Dictionary at Application startup. <br>
+ * It also provides mechanisms for basic Create, Read and Delete operations of the Dictionary.
+ * @see #init()
+ * @see #addToDictionary(String)
+ * @see #deleteWord(String)
+ * @see #printAnagrams(String)
  * @author slasisi
  *
  */
@@ -92,6 +95,13 @@ public class DictionaryService {
 		return anagram.loadWord(dictionaryWord).getAnagrams();
 	}
 
+	/**
+	 * Performs a DB check against a generated anagram <br>
+	 * Checks if the word exist in the Dictionary <br>
+	 * Returns only valid Anagrams that exist in the Dictionary.
+	 * @param anagram
+	 * @return
+	 */
 	protected String generateValidAnagrams(AnagramGenerator anagram) {
 		StringBuilder validAnagramBuilder = new StringBuilder();
 		String[] anagrams = anagram.getAnagramsArray();

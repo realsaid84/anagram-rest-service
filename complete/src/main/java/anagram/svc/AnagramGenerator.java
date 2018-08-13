@@ -1,7 +1,7 @@
 package anagram.svc;
 
 /**
- * Generates all possible of a loaded word
+ * Generates all possible anagrams of a loaded word
  * @author slasisi
  *
  */

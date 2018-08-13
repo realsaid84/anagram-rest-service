@@ -8,8 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 /**
- * Dictionary Repository enables the support for manipulating <br>
- * DictionaryWord Objects
+ * Dictionary Repository enables the support for manipulating DictionaryWord Objects<br>
  * @author slasisi
  */
 public interface DictionaryWordRepository extends JpaRepository<DictionaryWord, Long> {
