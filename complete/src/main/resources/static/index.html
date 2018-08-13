@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Anagram Web Client</title>
+   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<script>
+function printAnagrams(){
+	var textbox = document.getElementById('printAnagramsTxt');
+	var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function() {
+        if (this.readyState == 4 ) {
+            document.getElementById("resulttxt").innerHTML =
+            this.responseText;
+       }
+    };
+	xhr.open('GET', "http://localhost:8080/anagram/"+textbox.value, true);
+	xhr.send();
+	xhr.response();
+}
+
+function addWord(){
+	var textbox = document.getElementById('addWordTxt');
+	var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function() {
+        if (this.readyState == 4 ) {
+            document.getElementById("resulttxt").innerHTML =
+            this.responseText;
+       }
+    };
+    xhr.open("POST", "http://localhost:8080/word");
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(JSON.stringify({word:textbox.value}));
+	xhr.response();
+}
+
+function deleteWord(){
+	var textbox = document.getElementById('deleteWordTxt');
+	var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function() {
+        if (this.readyState == 4 ) {
+            document.getElementById("resulttxt").innerHTML =
+            this.responseText;
+       }
+    };
+	xhr.open('DELETE', "http://localhost:8080/word/"+textbox.value, true);
+	xhr.send();
+	xhr.response();
+}
+
+</script>
+<body>
+	<div class="container-fluid">
+    <h1>Anagram Web Client</h1>
+    <h2>Options</h2>
+     <!--  Print Anagrams -->
+    <p>[P] Print Anagrams <a href="/anagram/anagram">here</a></p>
+    <textarea id="printAnagramsTxt"></textarea> 
+    <br/>
+     <button type="button" onclick="printAnagrams()">Print Anagrams!</button>
+     <!--  Add Word to Dictionary -->
+    <p>[A] Add a word to the Dictionary<a href="/word/example"> here</a></p>
+     <textarea id="addWordTxt"></textarea> 
+    <br/>
+     <button type="button" onclick="addWord()">Add Word!</button>
+      <!--  Delete Word from Dictionary -->
+    <p>[D] Delete a Word from the Dictionary <a href="/word/example"> here</a></p>
+     <textarea id="deleteWordTxt"></textarea> 
+    <br/>
+     <button type="button" onclick="deleteWord()">Delete Word!</button>
+    </div>
+    <div class="result">
+    <h1>Results</h1>
+    <hr><hr>
+    <p>Server Response : </p>
+    <hr>
+    <p id=resulttxt></p>
+    </div>
+</body>
+</body>
+</html>
