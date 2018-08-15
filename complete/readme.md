@@ -70,7 +70,7 @@ To build the application, please follow the following steps :
 2. Navigate into the application directory using `cd anagram-rest-service/complete `
 3. Run `mvn package && java -jar target/anagram-rest-service-0.1.0.jar` or
 `./gradlew build && java -jar build/libs/anagram-rest-service-0.1.0.jar` if installed.
-If you run into issues, import as an existing Maven Project in your IDE (Eclipse or Intellij) and run as a java 
+If you run into issues, import as an existing Maven Project in your IDE (Eclipse or Intellij) and run as a maven/java 
 application.
 4. After packaging, application startup and loading of Dictionary Reference Data at post construct time, you can interact with the application by using a browser UI:
 https:localhost:8080 or curl your REST requests from command line for each of the operation i.e.
